@@ -9,6 +9,9 @@ import Loader from "./Loader";
 //Coin
 import Coin from "./Coin";
 
+//Css Landing
+import styles from "./Landing.module.css"
+
 const Landing = () => {
 
     const [coins,setCoin]=useState([])
@@ -27,9 +30,9 @@ const Landing = () => {
     }
     const searchCoins=coins.filter(coin=>coin.name.toLowerCase().includes(search))
     return (
-        <div>
+        <div className={styles.coinContainer}>
             
-            <input type="text" placeholder='Search' value={search} onChange={searchHandeler}/>
+            <input className={styles.input}type="text" placeholder='Search' value={search} onChange={searchHandeler}/>
             {
                 coins.length ?
                 <div>
@@ -39,9 +42,9 @@ const Landing = () => {
                             name={item.name}
                             image={item.image}
                             symbol={item.symbol}
-                            price={item.price}
-                            marketCap={item.marketCap}
-                            priceChange={item.market_cap_change_24h}
+                            price={item.current_price}
+                            marketCap={item.market_cap}
+                            priceChange={item.price_change_percentage_24h}
 
                             />)
                         }
